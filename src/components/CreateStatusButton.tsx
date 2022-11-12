@@ -1,9 +1,14 @@
 import StatusButton from "../features/StatusButton";
 
-const CreateStatusButton: React.FC = () => {
+interface Props {
+    setActiveBar: React.Dispatch<React.SetStateAction<boolean>>;
+    activeBar: boolean;
+}
+
+const CreateStatusButton: React.FC<Props> = ({setActiveBar, activeBar}) => {
     
-    function editStatus(str: string) : void {
-        console.log(str);
+    const editStatus = () => {
+        setActiveBar(!activeBar);
     }
     
     return <StatusButton editStatus={editStatus} doIt='Сменить статус'/>

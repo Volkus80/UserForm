@@ -20,7 +20,13 @@ const PasswordLine: React.FC<Pass> = ({password, passErr, setPassword, setPassEr
     return (
         <>
             <Label labelText="Пароль" />
-            <Input type='password' value={password} onChange={changePassword} onBlur={checkPassword} />
+            <Input 
+                err={passErr}
+                name='password' 
+                type='password' 
+                value={password} 
+                onChange={changePassword} 
+                onBlur={checkPassword} />
             <Help helpText ='Ваш новый пароль должен содержать не менее 5 символов.'/>
             <div />
             <div>

@@ -22,7 +22,13 @@ const CheckPasswordLine: React.FC<Props> = ({password, checkPass, checkPassErr, 
     return (
         <>
             <Label labelText='Пароль еще раз'/> 
-            <Input value={checkPass} type='password' onChange={onChange} onBlur={onBlur} />
+            <Input
+                err={checkPassErr}
+                name='checkPass' 
+                type='password' 
+                value={checkPass} 
+                onChange={onChange} 
+                onBlur={onBlur} />
             <Help helpText='Повторите пароль, пожалуйста, это обезопасит вас с нами
             на случай ошибки.' />
             <div/>

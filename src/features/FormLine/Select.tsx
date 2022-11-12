@@ -12,7 +12,7 @@ const StyledSelect = styled.select`
     background-size: 10px auto;
     appearance: none;
     width: 90%;
-    padding-left: 10px;
+    padding: .5rem;
 `;
 
 

@@ -1,4 +1,4 @@
-import {createContext, useState} from 'react';
+import {createContext, useState, useRef} from 'react';
 import {data, index} from '../../data/Data';
 import Container from "../../features/Container";
 import Title from "../../features/Title";
@@ -9,6 +9,9 @@ import SelectLine from "../SelectLine";
 import Input from "../../features/FormLine/Input";
 import PasswordLine from '../PasswordLine';
 import CheckPasswordLine from '../CheckPasswordLine';
+import MailLine from '../MailLine';
+import AggrementLine from '../../features/AggrementLine';
+import SubmitButton from '../SubmitButton';
 
 
 type SetStr = (s: string) => void;
@@ -39,7 +42,8 @@ const defaultValue = {
 export const AppContext = createContext<AppContextValues>(defaultValue);
 
 const App: React.FC = () => {
-    const [status, setStatus] = useState('');
+    const [activeBar, setActiveBar] = useState(false);
+    const [status, setStatus] = useState('Прежде чем действовать, надо понять');
     const [select, setSelect] = useState(data[index].city);
     const [password, setPassword] = useState('');
     const [checkPass, setCheckPass] = useState('');
@@ -47,6 +51,7 @@ const App: React.FC = () => {
     const [passErr, setPassErr] = useState(false);
     const [checkPassErr, setCheckPassErr] = useState(false);
     const [mailErr, setMailErr] = useState(false);
+    const inputRef = useRef<HTMLInputElement>(null);
     const value: AppContextValues = {
         select,
         setSelect,
@@ -60,8 +65,16 @@ const App: React.FC = () => {
     return (
         <AppContext.Provider value={value}>
             <Container>
-                <Title />
-                <StatusBar />
+                <Title 
+                    setActiveBar={setActiveBar}
+                    activeBar={activeBar}
+                />
+                <StatusBar 
+                    status={status}
+                    active={activeBar} 
+                    setActiveBar={setActiveBar}
+                    setStatus={setStatus}
+                />
                 <SelectLine />
                 <PasswordLine 
                     password={password} 
@@ -75,14 +88,15 @@ const App: React.FC = () => {
                     checkPassErr={checkPassErr}
                     setCheckPass={setCheckPass}
                     setCheckPassErr={setCheckPassErr}
-                />                
-                {/* <Label labelText='Пароль еще раз'/>
-                <Input />
-                <Help helpText ='Повторите пароль, пожалуйста, это обезопасит вас с нами
-            на случай ошибки.'/>
-                <Label labelText='Электронная почта'/>
-                <Input />
-                <Help helpText ='Можно изменить адрес, указанный при регистрации. '/> */}
+                />  
+                <MailLine 
+                    mail={mail}
+                    mailErr={mailErr}
+                    setMail={setMail}
+                    setMailErr={setMailErr}             
+                />      
+                <AggrementLine />  
+                <SubmitButton />      
             
             </Container>
         </AppContext.Provider>

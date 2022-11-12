@@ -1,11 +1,6 @@
 import styled, {css} from 'styled-components';
-
-
-const StyledInput = styled.input`
-    width: 90%;  
-`;
-
 interface Props{
+    err: boolean;
     name: string;
     value: string;
     type: string;
@@ -13,9 +8,24 @@ interface Props{
     onBlur: () => void;
 }
 
-const Input: React.FC<Props> = ({name, value, type, onChange, onBlur}) => {
+interface Style {
+    err: boolean;
+}
+
+
+const StyledInput = styled.input<Style>`
+    width: 90%; 
+    padding: .5rem;
+    outline: none;
+    border: 2px solid;
+    border-color: ${({err}) => err ? 'red' : 'rgba(153, 153, 153, 1)'}; 
+`;
+
+
+const Input: React.FC<Props> = ({name, value, type, err, onChange, onBlur}) => {
     return(
         <StyledInput 
+            err={err}
             name={name}
             type={type} 
             value={value} 

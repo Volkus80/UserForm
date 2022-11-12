@@ -10,11 +10,11 @@ const StyledContainer = styled.div`
     
 `;
 
-// interface ContainerProps {
-//     children: any;
-// }
+interface ContainerProps {
+    children: React.ReactNode;
+}
 
-const Container: React.FC<PropsWithChildren> = ({children}) => {
+const Container: React.FC<ContainerProps>= ({children}) => {
     return (
         <StyledContainer>
             {children}

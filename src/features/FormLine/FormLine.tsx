@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PropsWithChildren } from 'react';
+// import { PropsWithChildren } from 'react';
 
 const Container = styled.div`
     grid-column: 1/4;
@@ -7,7 +7,11 @@ const Container = styled.div`
     grid-template-columns: subgrid;
 `;
 
-const FormLine: React.FC<PropsWithChildren> = ({children}) => {
+interface FormLine {
+    children: React.ReactNode;
+}
+
+const FormLine: React.FC<FormLine> = ({children}) => {
     return (
         <Container>
             {children}
