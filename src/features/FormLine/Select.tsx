@@ -5,6 +5,7 @@ import { AppContext } from '../../components/App/App';
 import { useContext } from 'react';
 
 const StyledSelect = styled.select`
+    margin-left: 1rem;
     border-color: rgba(153, 153, 153, 1);
     background-image: url(${arrow});
     background-repeat: no-repeat;

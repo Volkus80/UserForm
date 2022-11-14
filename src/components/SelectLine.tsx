@@ -10,12 +10,11 @@ const SelectLine: React.FC = () => {
         <FormLine>
             <Label labelText='Ваш город'/>
             <Select>
-                {data.map((elem, i) => {
+                {data.map(elem => {
                     if(Number(elem.population) >= 50_000) {
                         return <option key={elem.city}>{elem.city}</option>
                         }
-                    } 
-                    
+                    }                     
                 )}
             </Select>
             <div/>

@@ -1,13 +1,12 @@
 import StatusButton from "../features/StatusButton";
+import {useContext} from 'react';
+import {AppContext} from '../components/App/App';
 
-interface Props {
-    setActiveBar: React.Dispatch<React.SetStateAction<boolean>>;
-    activeBar: boolean;
-}
 
-const CreateStatusButton: React.FC<Props> = ({setActiveBar, activeBar}) => {
-    
-    const editStatus = () => {
+const CreateStatusButton: React.FC= () => {
+    const {activeBar, setActiveBar} = useContext(AppContext);
+    const editStatus = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
         setActiveBar(!activeBar);
     }
     

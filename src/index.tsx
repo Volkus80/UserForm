@@ -12,6 +12,12 @@ const Global = createGlobalStyle`
     font-family: 'Arial';
   }
 
+  @media (max-width: 650px) {
+    * {
+    font-size: 10px;
+    }
+  }
+
  
 
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import Input from './FormLine/Input';
+import { useContext } from 'react';
+import { AppContext } from '../components/App/App';
 
 const Container = styled.div`
     grid-column: 2/4;
@@ -9,6 +10,14 @@ const Container = styled.div`
     align-items: center;
     margin-bottom: 20px;
 `;
+
+const StyledInput = styled.input`
+    width: 90%; 
+    padding: .5rem;
+    outline: none;
+    border: 2px solid rgba(153, 153, 153, 1);
+`;
+
 
 const Bar = styled.div`
     width: 70%;
@@ -37,24 +46,18 @@ const Text = styled.p`
     font-weight: 400;
 `;
 
-interface Props {
-    status: string;
-    active: boolean; 
-    setActiveBar: React.Dispatch<React.SetStateAction<boolean>>;
-    setStatus: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const StatusBar: React.FC<Props> = ({status, active, setActiveBar, setStatus}) => {
+const StatusBar: React.FC = () => {
+    const {status, activeBar, setActiveBar, setStatus, ref} = useContext(AppContext);
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setStatus(e.target.value);
     const onBlur = () => setActiveBar(false);
-    const barContent = active ? (
-        <Input 
+    const barContent = activeBar ? (
+        <StyledInput 
             name='status'
             type='text'
-            err={false}
             value={status}
             onChange={onChange}
             onBlur={onBlur}
+            ref={ref}
         />
 
     ) : <Text>{status}</Text>

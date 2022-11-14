@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import { PropsWithChildren } from 'react';
 
 const Container = styled.div<Line>`
     grid-column: 1/4;

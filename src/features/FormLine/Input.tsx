@@ -14,6 +14,7 @@ interface Style {
 
 
 const StyledInput = styled.input<Style>`
+    margin-left: 1rem;
     width: 90%; 
     padding: .5rem;
     outline: none;
@@ -22,7 +23,7 @@ const StyledInput = styled.input<Style>`
 `;
 
 
-const Input: React.FC<Props> = ({name, value, type, err, onChange, onBlur}) => {
+const Input: React.FC<Props> = ({err, name, value, type, onChange, onBlur}) => {
     return(
         <StyledInput 
             err={err}
@@ -30,8 +31,9 @@ const Input: React.FC<Props> = ({name, value, type, err, onChange, onBlur}) => {
             type={type} 
             value={value} 
             onChange={onChange} 
-            onBlur={onBlur} />
+            onBlur={onBlur} 
+        />
     )
-}
+};
 
 export default Input;

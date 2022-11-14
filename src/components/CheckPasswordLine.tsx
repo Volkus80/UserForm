@@ -1,18 +1,13 @@
+import { useContext } from "react";
+import { AppContext } from "./App/App";
 import Label from "../features/FormLine/Label";
 import Input from "../features/FormLine/Input";
 import Help from "../features/FormLine/Help";
 import { ErrorMassage } from "../features/FormLine/ErrMessage";
 import FormLine from "../features/FormLine/FormLine";
 
-interface Props {
-    password: string;
-    checkPass: string;
-    checkPassErr: boolean;
-    setCheckPass: React.Dispatch<React.SetStateAction<string>>;
-    setCheckPassErr: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const CheckPasswordLine: React.FC<Props> = ({password, checkPass, checkPassErr, setCheckPass, setCheckPassErr}) => {
+const CheckPasswordLine: React.FC= () => {
+    const {password, checkPass, checkPassErr, setCheckPass, setCheckPassErr} = useContext(AppContext);
     const errText = checkPass.trim().length === 0 ? 'Укажите пароль' : 'Пароли не совпадают';
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement> ) => {setCheckPass(e.target.value)};

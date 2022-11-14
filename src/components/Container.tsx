@@ -1,47 +1,39 @@
 import styled from 'styled-components';
-import { useEffect } from 'react';
 import { validPassword, validMail } from '../helper/validators';
+import { useContext } from 'react';
+import { AppContext } from './App/App';
 
 
 const StyledContainer = styled.form`
     margin: 0 auto;
     width: 90%;
     display: grid;
-    grid-template-columns: 2fr 3fr 4fr;    
+    grid-template-columns: 2fr 3fr 4fr; 
 `;
 
-interface ContainerProps {
-    status: string;
-    mail: string;
-    checkPass: string;
-    password: string;
-    mailErr: boolean;
-    checkPassErr: boolean;
-    passErr: boolean;
-    setPassErr: React.Dispatch<React.SetStateAction<boolean>>;
-    setCheckPassErr: React.Dispatch<React.SetStateAction<boolean>>;
-    setMailErr: React.Dispatch<React.SetStateAction<boolean>>;    
+interface ContainerProps {  
     children: React.ReactNode;
 }
 
-const Container: React.FC<ContainerProps>= (props) => {
+const Container: React.FC<ContainerProps>= ({children}) => {
+    const prop = useContext(AppContext);
 
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (!validPassword(props.password)) {props.setPassErr(true);}
-        if (props.password !== props.checkPass) {props.setCheckPassErr(true);}
-        if (!validMail(props.mail)) {props.setMailErr(true);} 
-        if (validPassword(props.password) && props.password === props.checkPass && validMail(props.mail)) {
+        if (!validPassword(prop.password)) {prop.setPassErr(true);}
+        if (prop.password !== prop.checkPass) {prop.setCheckPassErr(true);}
+        if (!validMail(prop.mail)) {prop.setMailErr(true);} 
+        if (validPassword(prop.password) && prop.password === prop.checkPass && validMail(prop.mail)) {
             const datas: FormData = new FormData(e.currentTarget);
-            datas.append('status', props.status);
-            datas.append('time', new Date().toLocaleString());
+            datas.set('status', prop.status);
+            datas.set('time', new Date().toLocaleString());
             console.log(Array.from(datas));
         } 
     }
     return (
         <StyledContainer onSubmit={onSubmit}>
-            {props.children}
+            {children}
         </StyledContainer>
     )
 }

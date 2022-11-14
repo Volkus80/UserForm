@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const Text = styled.p`
     font-size: 12px;
     color: rgba(153, 153, 153, 1);
+    padding-left: 1rem;
 
 `;
 

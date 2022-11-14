@@ -19,7 +19,7 @@ const Button = styled.button`
 
 interface ButtonProps {
     doIt: string;
-    editStatus: () => any;
+    editStatus: (e:any) => any;
 }
 
 const StatusButton: React.FC<ButtonProps> = ({doIt, editStatus}) => {
