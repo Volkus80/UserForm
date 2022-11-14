@@ -2,16 +2,17 @@ import styled from 'styled-components';
 import Input from './FormLine/Input';
 
 const Container = styled.div`
-    grid-column: 1/4;
+    grid-column: 2/4;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
 `;
 
 const Bar = styled.div`
-    width: 50%;
-    align-self: center;
-    height: 70px;
+    width: 70%;
+    height: 60px;
     border-radius: 5px;
     background:#E5E5E5;
     padding-left: 10px;

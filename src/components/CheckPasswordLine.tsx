@@ -2,6 +2,7 @@ import Label from "../features/FormLine/Label";
 import Input from "../features/FormLine/Input";
 import Help from "../features/FormLine/Help";
 import { ErrorMassage } from "../features/FormLine/ErrMessage";
+import FormLine from "../features/FormLine/FormLine";
 
 interface Props {
     password: string;
@@ -21,24 +22,28 @@ const CheckPasswordLine: React.FC<Props> = ({password, checkPass, checkPassErr, 
 
     return (
         <>
-            <Label labelText='Пароль еще раз'/> 
-            <Input
-                err={checkPassErr}
-                name='checkPass' 
-                type='password' 
-                value={checkPass} 
-                onChange={onChange} 
-                onBlur={onBlur} />
-            <Help helpText='Повторите пароль, пожалуйста, это обезопасит вас с нами
-            на случай ошибки.' />
-            <div/>
-            <div>
-                <ErrorMassage
-                    errText={errText}
+            <FormLine margin='20px 0 5px 0'>
+                <Label labelText='Пароль еще раз'/>
+                <Input
                     err={checkPassErr}
-                />
-            </div>
-            <div/>
+                    name='checkPass'
+                    type='password'
+                    value={checkPass}
+                    onChange={onChange}
+                    onBlur={onBlur} />
+                <Help helpText='Повторите пароль, пожалуйста, это обезопасит вас с нами
+                на случай ошибки.' />
+            </FormLine>
+            <FormLine margin='0'>
+                <div/>
+                <div>
+                    <ErrorMassage
+                        errText={errText}
+                        err={checkPassErr}
+                    />
+                </div>
+                <div/>
+            </FormLine>
                 
         </>
     )

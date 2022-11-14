@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Label from './FormLine/Label';
+import FormLine from './FormLine/FormLine';
 
 
 const CheckBoxContainer = styled.div`
@@ -14,7 +15,7 @@ const Text = styled.span`
 
 const AggrementLine: React.FC = () => {
     return (
-        <>
+        <FormLine>
             <Label labelText='Я согласен' />
             <CheckBoxContainer>
                 <label >
@@ -24,7 +25,7 @@ const AggrementLine: React.FC = () => {
                 
             </CheckBoxContainer>
 
-        </>
+        </FormLine>
     )
 }
 

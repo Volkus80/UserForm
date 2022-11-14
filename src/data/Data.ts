@@ -94,5 +94,6 @@ const data = [
 ];
 
 const index = data.indexOf(data.reduce((prev, cur) => Number(prev.population) > Number(cur.population) ? prev : cur));
+const defaultCity = data[index].city;
 
-export {data, index};
+export {data, defaultCity};

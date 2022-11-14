@@ -1,12 +1,9 @@
 import {createContext, useState, useRef} from 'react';
-import {data, index} from '../../data/Data';
-import Container from "../../features/Container";
+import {data, defaultCity} from '../../data/Data';
+import Container from "../Container";
 import Title from "../../features/Title";
 import StatusBar from "../../features/StatusBar";
-import Help from "../../features/FormLine/Help";
-import Label from "../../features/FormLine/Label";
 import SelectLine from "../SelectLine";
-import Input from "../../features/FormLine/Input";
 import PasswordLine from '../PasswordLine';
 import CheckPasswordLine from '../CheckPasswordLine';
 import MailLine from '../MailLine';
@@ -14,7 +11,8 @@ import AggrementLine from '../../features/AggrementLine';
 import SubmitButton from '../SubmitButton';
 
 
-type SetStr = (s: string) => void;
+
+type SetStr = (s: string ) => void;
 type SetBoolean = (s: boolean) => void;
 
 
@@ -30,7 +28,7 @@ interface AppContextValues {
 }
 
 const defaultValue = {
-    select: 'Красноярск',
+    select: defaultCity,
     setSelect: (str: string) => console.log(str),
     setPassword: (str: string) => console.log(str),
     setCheckPass: (str: string) => console.log(str),
@@ -38,20 +36,19 @@ const defaultValue = {
     setPassErr: (b: boolean) => console.log(b),
     setCheckPassErr: (b: boolean) => console.log(b),
     setMailErr: (b: boolean) => console.log(b),
-}
+};
 export const AppContext = createContext<AppContextValues>(defaultValue);
 
 const App: React.FC = () => {
     const [activeBar, setActiveBar] = useState(false);
     const [status, setStatus] = useState('Прежде чем действовать, надо понять');
-    const [select, setSelect] = useState(data[index].city);
+    const [select, setSelect] = useState(defaultCity);
     const [password, setPassword] = useState('');
     const [checkPass, setCheckPass] = useState('');
     const [mail, setMail] = useState('');
     const [passErr, setPassErr] = useState(false);
     const [checkPassErr, setCheckPassErr] = useState(false);
     const [mailErr, setMailErr] = useState(false);
-    const inputRef = useRef<HTMLInputElement>(null);
     const value: AppContextValues = {
         select,
         setSelect,
@@ -64,7 +61,18 @@ const App: React.FC = () => {
     };
     return (
         <AppContext.Provider value={value}>
-            <Container>
+            <Container 
+                status={status}
+                mail={mail}
+                password={password}
+                checkPass={checkPass}
+                passErr={passErr} 
+                checkPassErr={checkPassErr} 
+                mailErr={mailErr}
+                setPassErr={setPassErr}
+                setCheckPassErr={setCheckPassErr}
+                setMailErr={setMailErr}
+            >
                 <Title 
                     setActiveBar={setActiveBar}
                     activeBar={activeBar}

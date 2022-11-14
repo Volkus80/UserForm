@@ -2,29 +2,30 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 `;
 const Button = styled.button`
     background: transparent;
     font-size: 12px;
     color: #0C77BB;
+    text-decoration: #0C77BB dashed 2px;
     border: none;
     border-bottom: #0C77BB dashed 2px;
     outline: none;
     cursor: pointer;
-    margin:  0 calc(57%) 20px 100px;
+    margin:  0 calc(25%) 20px 0;
     align-self: flex-end;
 `;
 
 interface ButtonProps {
     doIt: string;
-    editStatus: (str: string) => any;
+    editStatus: () => any;
 }
 
 const StatusButton: React.FC<ButtonProps> = ({doIt, editStatus}) => {
     return (
         <Container>
-            <Button onClick={() => editStatus('ok')}>{doIt}</Button>
+            <Button onClick={editStatus}>{doIt}</Button>
         </Container>
     )   
 }
