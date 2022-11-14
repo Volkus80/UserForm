@@ -7,7 +7,7 @@ const StyledButton = styled.button`
     font-size: 1.2rem;
     padding: 10px 15px;
     margin-right: 20px;
-    color: white;
+    color: #ffffff;
     cursor: pointer;
     transition: ease .3s;
     &:hover {
