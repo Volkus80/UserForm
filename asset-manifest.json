@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/UserForm/static/js/main.0335091b.js",
+    "static/js/787.f78a4e9f.chunk.js": "/UserForm/static/js/787.f78a4e9f.chunk.js",
+    "static/media/arrow.png": "/UserForm/static/media/arrow.2bb69149c0991f065879.png",
+    "index.html": "/UserForm/index.html",
+    "main.0335091b.js.map": "/UserForm/static/js/main.0335091b.js.map",
+    "787.f78a4e9f.chunk.js.map": "/UserForm/static/js/787.f78a4e9f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.0335091b.js"
+  ]
+}
