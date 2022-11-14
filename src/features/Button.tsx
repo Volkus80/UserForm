@@ -25,7 +25,7 @@ interface Style {
 
 const Button: React.FC<Style> = ({type, text}) => {
     return (
-        <StyledButton type={type}>{text}</StyledButton>
+        <StyledButton type={type} title='Result in console'>{text}</StyledButton>
     )
 }
 
